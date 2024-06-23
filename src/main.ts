@@ -8,6 +8,8 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
 
+  app.enableCors()
+
   const config = new DocumentBuilder()
     .setTitle('Nest Authx API')
     .setDescription('Authentication and Authorization API using NestJS')
