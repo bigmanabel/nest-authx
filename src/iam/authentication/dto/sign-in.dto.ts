@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEmail, IsStrongPassword, MinLength } from "class-validator";
+import { IsEmail, IsNumberString, IsOptional, IsStrongPassword, MinLength } from "class-validator";
 
 export class SignInDto {
     @ApiProperty()
@@ -10,4 +10,9 @@ export class SignInDto {
     @IsStrongPassword()
     @MinLength(8)
     password: string;
+
+    @ApiProperty()
+    @IsOptional()
+    @IsNumberString()
+    tfaCode?: string;
 }
