@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { IamModule } from './iam/iam.module';
+import { RedisModule } from './redis/redis.module';
 
 @Module({
   imports: [
@@ -19,8 +20,12 @@ import { IamModule } from './iam/iam.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
+    RedisModule.forRoot({
+      host: process.env.REDIS_HOST,
+      port: +process.env.REDIS_PORT,
+    }),
     UsersModule,
-    IamModule
+    IamModule,
   ],
   controllers: [AppController],
   providers: [AppService],
