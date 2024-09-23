@@ -16,6 +16,12 @@ export class User {
     @Column('enum', { enum: Role, default: Role.Regular })
     role: Role;
 
+    @Column({ default: false })
+    isTfaEnabled: boolean;
+
+    @Column({ nullable: true })
+    tfaSecret: string;
+
     @Column({ nullable: true })
     googleId: string;
 
